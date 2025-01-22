@@ -3,3 +3,5 @@
 此Fork已被合并，今后将只用于发布Release
 
 https://github.com/EnderWolf006/ElectronClassSchedule/tree/ECS2.0
+
+* 请不要在此下载source code.zip

@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: EnderWolf006/ElectronClassSchedule
-          ref: ${{ github.event.client_payload.ref }}
+          ref: ECS2.0
           path: source
       
       - name: Enter source
@@ -59,7 +59,7 @@ jobs:
           tag_name: unmarked
           release_name: Build Result
           body: |
-            仓库(ElectronClassSchedule/ECS2.0)[https://github.com/EnderWolf006/ElectronClassSchedule/tree/ECS2.0]编译输出
+            仓库[EnderWolf006/ElectronClassSchedule:ECS2.0](https://github.com/EnderWolf006/ElectronClassSchedule/tree/ECS2.0)构建输出
           draft: false
           prerelease: true
 

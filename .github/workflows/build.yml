@@ -62,7 +62,7 @@ jobs:
           body: |
             仓库[EnderWolf006/ElectronClassSchedule:ECS2.0](https://github.com/EnderWolf006/ElectronClassSchedule/tree/ECS2.0)构建输出
           draft: false
-          prerelease: true
+          prerelease: false
 
       - name: Pack folder to zip
         uses: thedoctor0/zip-release@0.7.5

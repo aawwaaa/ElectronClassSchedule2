@@ -19,11 +19,7 @@ jobs:
         with:
           repository: EnderWolf006/ElectronClassSchedule
           ref: ECS2.0
-          path: source
       
-      - name: Enter source
-        run: cd source
-
       - name: Set up VS
         uses: seanmiddleditch/gha-setup-vsdevenv@master
 

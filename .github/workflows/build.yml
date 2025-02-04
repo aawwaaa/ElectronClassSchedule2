@@ -43,8 +43,11 @@ jobs:
       - name: Rebuild dependencies
         run: node_modules/.bin/electron-rebuild
 
-      - name: Write version info
-        run: echo "${{ steps.checkout.outputs.commit }}" > ./version
+      - name: Process version info
+        id: version
+        run: |
+          echo "$(git rev-parse HEAD)" > ./version
+          echo "::set-output name=commit::$(git rev-parse HEAD)"
 
       - name: Delete release
         uses: cb80/delrel@latest
@@ -62,8 +65,10 @@ jobs:
           release_name: Build Result
           body: |
             仓库[EnderWolf006/ElectronClassSchedule:ECS2.0](https://github.com/EnderWolf006/ElectronClassSchedule/tree/ECS2.0)构建输出
-            版本: `${{ steps.checkout.outputs.commit }}`
-            __ 请不要从此下载source code.zip __
+            版本: `${{ steps.version.outputs.commit }}`
+            __请不要从此下载source code.zip__
+
+            [META] {"version": "${{ steps.version.outputs.commit }}"}
           draft: false
           prerelease: false
 

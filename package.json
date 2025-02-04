@@ -14,6 +14,7 @@
     "electron-packager": "^17.1.2"
   },
   "dependencies": {
+    "adm-zip": "^0.5.16",
     "electron": "^29.1.5",
     "electron-disable-minimize": "^2.1.0",
     "electron-prompt": "^1.7.0",

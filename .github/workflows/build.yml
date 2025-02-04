@@ -105,7 +105,6 @@ jobs:
           directory: './out/classSchedule-win32-x64'
 
       - name: Upload release asset
-        id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -118,15 +117,14 @@ jobs:
       - name: Build application for linux
         run: npm run build-linux
 
-      - name: Pack folder to zip
+      - name: Pack folder to zip for linux
         uses: thedoctor0/zip-release@0.7.5
         with:
           type: 'zip'
           filename: 'release.zip'
           directory: './out/classSchedule-linux-x64'
 
-      - name: Upload release asset
-        id: upload-release-asset
+      - name: Upload release asset for linux
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

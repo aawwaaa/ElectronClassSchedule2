@@ -15,6 +15,7 @@ jobs:
 
     steps:
       - name: Checkout source repository
+        id: checkout
         uses: actions/checkout@v3
         with:
           repository: EnderWolf006/ElectronClassSchedule
@@ -42,8 +43,8 @@ jobs:
       - name: Rebuild dependencies
         run: node_modules/.bin/electron-rebuild
 
-      - name: Build application
-        run: npm run build
+      - name: Write version info
+        run: echo "${{ steps.checkout.outputs.head_ref }}" > ./version
 
       - name: Delete release
         uses: cb80/delrel@latest
@@ -61,9 +62,34 @@ jobs:
           release_name: Build Result
           body: |
             仓库[EnderWolf006/ElectronClassSchedule:ECS2.0](https://github.com/EnderWolf006/ElectronClassSchedule/tree/ECS2.0)构建输出
-            ** 请不要从此下载source code.zip **
+            版本: `${{ steps.checkout.outputs.head_ref }}`
+            __ 请不要从此下载source code.zip __
           draft: false
           prerelease: false
+
+      - name: Pack folder to update zip
+        uses: thedoctor0/zip-release@0.7.5
+        with:
+          type: 'zip'
+          filename: 'update.zip'
+          directory: './'
+
+      - name: Upload update asset
+        id: upload-update-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./update.zip
+          asset_name: update.zip
+          asset_content_type: application/zip
+
+      - name: Clean update.zip
+        run: rm ./update.zip
+
+      - name: Build application
+        run: npm run build
 
       - name: Pack folder to zip
         uses: thedoctor0/zip-release@0.7.5

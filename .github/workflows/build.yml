@@ -78,7 +78,7 @@ jobs:
           type: 'zip'
           filename: 'update.zip'
           directory: './'
-          exclusions: '*.git*'
+          exclusions: '*.git* node_modules'
 
       - name: Upload update asset
         id: upload-update-asset

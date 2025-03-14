@@ -68,6 +68,10 @@ jobs:
             版本: `${{ steps.version.outputs.commit }}`
             __请不要从此下载source code.zip__
 
+            通过镜像下载Release文件:
+            - [Win10_Win11_ElectronClassSchedule.zip](https://ghfast.top/https://github.com/aawwaaa/ElectronClassSchedule2/releases/download/unmarked/Win10_Win11_ElectronClassSchedule.zip)
+            - [Win7_Win8_ElectronClassSchedule.zip](https://ghfast.top/https://github.com/aawwaaa/ElectronClassSchedule2/releases/download/unmarked/Win7_Win8_ElectronClassSchedule.zip)
+
             [META] {"version": "${{ steps.version.outputs.commit }}"}
           draft: false
           prerelease: false
